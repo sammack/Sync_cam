@@ -1,0 +1,56 @@
+/******************************************************************************
+* Project: Sync_CAM
+* Repository: https://github.com/sammack/Sync_cam
+* File: readme.rm
+*
+******************************************************************************/
+*
+* COPYRIGHT(c) 2014 Sam MacKenzie, All rights reserved.
+*
+* Redistribution and use in source and binary forms, with or without modification,
+* are permitted provided that the following conditions are met:
+*   1. Redistributions of source code must retain the above copyright notice,
+*      this list of conditions and the following disclaimer.
+*   2. Redistributions in binary form must reproduce the above copyright notice,
+*      this list of conditions and the following disclaimer in the documentation
+*      and/or other materials provided with the distribution.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*******************************************************************************/
+
+Firmware for the Sync_CAM project 
+
+The purpose of this project is to create a low cost system of perfectly synchronised 
+video cameras. Multi-camera vision systems are useful in a variety of robotics and motion
+tracking applications, and precise shutter timing is important, this system allows a
+large number of cameras with little extra investment.
+
+The Camera hardware is based around an Aptina MT9V034 image sensor and 
+an STM32F407 microprocessor. The cameras are connected together and to a 
+host PC using standard CAT6 cabling, carrying 100baseT Ethernet on two pairs,
+with Power over Ethernet and timing signals on the other two pairs. It will require 
+a custom Ethernet hub that generates the timing signal. The microprocessor receives
+the timing signal on dedicated lines of the CAT6 and generates the shutter timing
+for the image sensor. 
+
+Custom hardware does not exist yet, the PX4Flow optical flow camera uses the same  
+image sensor and microprocessor so I am using that for testing. There is a compile
+switch in the preprocessor defines to tell it which hardware is being used.
+
+A project has been created for IAR embedded workbench version 7.10.
+The project includes several directories:
+\EWARM contains the IAR embedded workbench project and associated files
+\SCR contains c files created specifically for the project (not library files)
+\INC contains all the header files created specificity for the project
+\DRIVERS contains the STM32F4 hardware abstraction library and the CMSIS library 
+
